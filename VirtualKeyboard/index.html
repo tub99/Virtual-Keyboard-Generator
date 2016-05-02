@@ -39,13 +39,18 @@
 				targetField=document.getElementById("target"),
 				kbObject=new MyKeyBoard(),
 				keyType=new KeyType(),
-				actionArr=[keyType.getAction().btBackSpace],
-				kTypeArr=[[keyType.getNumerics()]];
+				//Adding the action/special keys
+				actionArr=[keyType.getAction().btCapital ,keyType.getAction().btSmall ,keyType.getAction().btSpace,keyType.getAction().btSearch,
+				keyType.getAction().btBackSpace,keyType.getAction().btYes,keyType.getAction().btNo],
+				//adding normal keys like alphabets,numbers,symbols,mathematical operators
+				kTypeArr=[[keyType.getAlphabets().alp1],[keyType.getAlphabets().alp2],[keyType.getAlphabets().alp3],[keyType.getNumerics()],
+				[keyType.getSymbols()],[keyType.getMath()]];
 
-
-			kbObject.addkeyPad(keyPadHolder,kTypeArr,actionArr,targetField,null,0,0);
-			console.log(keyType.getNumerics());
-			 kbObject.addDraggableFeature("#keyboard");
+			//Creating the keypad
+			//function addkeyPad(keyPadHolder,normalkeyArr,actionKeyArr,targetField or textfield, callbackfor action Key,maximum Chars,gap)
+			kbObject.addkeyPad(keyPadHolder,kTypeArr,actionArr,targetField,null,0,0);// callback is made null by default
+			//Adding Draggable feature to keypad
+			kbObject.addDraggableFeature("#keyboard");
 
 		</script>
 </body>
