@@ -1,0 +1,51 @@
+<head>
+	<script type="text/javascript" src="js/MyKeyBoard.js"></script>
+	<script type="text/javascript" src="js/KeyType.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <style type="text/css">
+ 		.key{
+ 			background-color:#ffb3b3;
+		    border-radius: 10px;
+		    font-size: 20px;
+		     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	  	}
+	  	.key:hover{
+	  		background-color: #555555;
+    		color: white;
+	  	}
+	  	#target{
+	  		font-size: 20px;
+	  		font-family : cursive;
+	  	}
+  </style>
+
+</head>
+<body>
+	<h1>Virtual KeyBoard Generator</h1>
+	 <div class="form-group">
+	 	<div class="col-xs-6" >
+       		<input class="form-control input-lg" id="target" type="text">
+   		</div>
+    </div>
+	<br><br><br>
+	<div id="keyboard"></div>
+		<script type="text/javascript">
+			var keyPadHolder=document.getElementById("keyboard"),
+				targetField=document.getElementById("target"),
+				kbObject=new MyKeyBoard(),
+				keyType=new KeyType(),
+				actionArr=[keyType.getAction().btBackSpace],
+				kTypeArr=[[keyType.getNumerics()]];
+
+
+			kbObject.addkeyPad(keyPadHolder,kTypeArr,actionArr,targetField,null,0,0);
+			console.log(keyType.getNumerics());
+			 kbObject.addDraggableFeature("#keyboard");
+
+		</script>
+</body>
