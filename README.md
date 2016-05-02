@@ -1,8 +1,8 @@
 # Virtual-Keyboard-Generator
 This web application helps the user to generate a virtual keyboard of his own preference.
-The keyboard supports normal keys and user-defined action keys also. These action Keys like 'GO','SEARCH',etc works accoording to the callback function provided
+The keyboard supports normal keys and user-defined action keys also. These action Keys like 'GO','SEARCH',etc work accoording to the callback function provided.
 
-#Creating a keyboard with all keys.
+## Creating a keyboard with all keys.
 ``` javascript
 var keyPadHolder=document.getElementById("keyboard"),
 	targetField=document.getElementById("target"),
@@ -24,15 +24,15 @@ kbObject.addDraggableFeature("#keyboard");
 <p> FULL KEYBOARD </p>
 <p> <img src="VirtualKeyboard/screenshot/fullkeyboard.PNG"></img></p>
 
-<hr>A qwerty keypad<h3>
+## A qwert keyboard contains all alphabets in keyboard form.
 <p> QWERTY KEYBOARD </p>
 <p> <img src="VirtualKeyboard/screenshot/qwerty.PNG"></img></p>
 
-<hr>A numeric keypad<h3>
+## A numeric keypad contains numeric digits like 1,2,3 etc
 <p> Numeric KEYBOARD </p>
 <p> <img src="VirtualKeyboard/screenshot/numeric.PNG"></img></p>
 
-# Creating a custom keyboard
+## Creating a custom keyboard ie a user defined one where the user can include keys of his own choice
 ``` javascript
 var keyPadHolder=document.getElementById("keyboard"),
 	targetField=document.getElementById("target"),
@@ -50,7 +50,6 @@ kbObject.addDraggableFeature("#keyboard");
 
 
 ```
-<hr>A custom keypad<h3>
 <p> Custom KEYBOARD </p>
 <p> <img src="VirtualKeyboard/screenshot/custom.PNG"></img></p>
 
