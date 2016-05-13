@@ -1,0 +1,22 @@
+.key{
+	background-color:#ff4d94;
+	border-radius: 10px;
+	font-size: 20px;
+	 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+.key:hover{
+	background-color: #555555;
+	color: white;
+}
+#target{
+	font-size: 20px;
+	font-family : cursive;
+}
+#optionsField{
+
+	background-color:#b3ffff;
+	font-family: cursive;
+}
+body{
+ background-color: #ccff99;
+}

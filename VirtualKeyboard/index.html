@@ -1,56 +1,91 @@
 <head>
 	<script type="text/javascript" src="js/MyKeyBoard.js"></script>
 	<script type="text/javascript" src="js/KeyType.js"></script>
+	<script type="text/javascript" src="js/InputHandler.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <style type="text/css">
- 		.key{
- 			background-color:#ffb3b3;
-		    border-radius: 10px;
-		    font-size: 20px;
-		     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	  	}
-	  	.key:hover{
-	  		background-color: #555555;
-    		color: white;
-	  	}
-	  	#target{
-	  		font-size: 20px;
-	  		font-family : cursive;
-	  	}
-  </style>
-
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-	<h1>Virtual KeyBoard Generator</h1>
-	 <div class="form-group">
-	 	<div class="col-xs-6" >
-       		<input class="form-control input-lg" id="target" type="text">
-   		</div>
-    </div>
-	<br><br><br>
-	<div id="keyboard"></div>
-		<script type="text/javascript">
-			var keyPadHolder=document.getElementById("keyboard"),
-				targetField=document.getElementById("target"),
-				kbObject=new MyKeyBoard(),
-				keyType=new KeyType(),
-				//Adding the action/special keys
-				actionArr=[keyType.getAction().btCapital ,keyType.getAction().btSmall ,keyType.getAction().btSpace,keyType.getAction().btSearch,
-				keyType.getAction().btBackSpace,keyType.getAction().btYes,keyType.getAction().btNo],
-				//adding normal keys like alphabets,numbers,symbols,mathematical operators
-				kTypeArr=[[keyType.getAlphabets().alp1],[keyType.getAlphabets().alp2],[keyType.getAlphabets().alp3],[keyType.getNumerics()],
-				[keyType.getSymbols()],[keyType.getMath()]];
+	<h1 align="center">Virtual KeyBoard Generator</h1>
+	<div class="container" id="optionsField" align="left">
+	  <h2>Select type of keys for your Keyboard</h2>
+	  	<div class="form-group">
+		   <div class="checkbox" id="">
+  				<label><input type="checkbox" id="alp" value="">Alphabets</label>
+  				<label><input type="checkbox" id="num" value="">Numbers</label>
+  				<label><input type="checkbox" id="math"value="">Mathematical Operators</label>
+  				<label><input type="checkbox" id="symb" value="">Symbols</label>
+			</div>
+		</div>
+	  	<div class="form-group">
+	  	
+	  			<label for="usr">Add an ACTION Button if you want like SEARCH,GO,etc</label>
+	  		<div class="col-xs-2" >
+	 			 <input type="text" class="form-control" id="action"><br>
+	 			 <button type="submit" class="btn btn-primary" id="go">Go!</button>
+	 		</div>
+		</div>
+	</div>
+	<br><br>
 
-			//Creating the keypad
-			//function addkeyPad(keyPadHolder,normalkeyArr,actionKeyArr,targetField or textfield, callbackfor action Key,maximum Chars,gap)
-			kbObject.addkeyPad(keyPadHolder,kTypeArr,actionArr,targetField,null,0,0);// callback is made null by default
-			//Adding Draggable feature to keypad
-			kbObject.addDraggableFeature("#keyboard");
+	 <div class="form-group" align="center">
+	 	<div class="col-xs-8" id="keyInput">
+	 		<h3><label for="usr">Enter your Virtual Keyboard text :</label></h3>
+	   		<input class="form-control input-lg" id="target" type="text">
+		</div>
+	</div>
+	
+	
+
+
+		<script type="text/javascript">
+			
+				var cnt=0;
+				$('#go').click(function(){
+					var targetField=document.getElementById("target"),
+						kbObject=new MyKeyBoard(),
+						keyType=new KeyType(),
+						ipHandler=new InputHandler();
+					if(cnt>0){
+						ipHandler.clearDom('#keyboard');
+						keyTxt="<div id='keyboard'></div>";
+					}
+					else
+						keyTxt="<br><div id='keyboard'></div>";
+					$("#keyInput").append(keyTxt);
+					ipHandler.parseUserInput("checkbox","action");
+					var kObj=ipHandler.getKeyArrays();
+					var keyPadHolder=document.getElementById("keyboard");
+
+					// //Adding the action/special keys
+					// var
+					// 	actionArr=[keyType.getAction().btCapital ,keyType.getAction().btSmall ,keyType.getAction().btSpace,keyType.getAction().btSearch,
+					// 	keyType.getAction().btBackSpace,keyType.getAction().btYes,keyType.getAction().btNo],
+					// //adding normal keys like alphabets,numbers,symbols,mathematical operators
+					// 	kTypeArr=[[keyType.getAlphabets().alp1],[keyType.getAlphabets().alp2],[keyType.getAlphabets().alp3],[keyType.getNumerics()],
+					// 	[keyType.getSymbols()],[keyType.getMath()]];
+
+					//Creating the keypad
+					//function addkeyPad(keyPadHolder,normalkeyArr,actionKeyArr,targetField or textfield, callbackfor action Key,maximum Chars,gap)
+					kbObject.addkeyPad(keyPadHolder,kObj.normalkeys,kObj.actionKeys,targetField,null,0,0);// callback is made null by default
+					cnt++;
+					//Adding Draggable feature to keypad
+					kbObject.addDraggableFeature("#keyboard");
+	
+					ipHandler.resetElements("action");
+					
+
+
+
+
+
+				});
+				
 
 		</script>
 </body>

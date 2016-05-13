@@ -5,7 +5,7 @@ function KeyType(){
 			alp3: "zxcvbnm"
 		},
 		numeric="0123456789",
-		symbol=".,;?!:&=/",
+		symbol=".,;?!:&",
 		math="`+-*/=%^",
 		action={
 			btCapital : "Capital", 

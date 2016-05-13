@@ -156,8 +156,8 @@ function  MyKeyBoard() {
 
 	};
 	this.addDraggableFeature= function(id){
-			 $(function() {
-				    $( id).draggable();
+		$(function() {
+		    $( id).draggable();
 		});
 	};
 }
