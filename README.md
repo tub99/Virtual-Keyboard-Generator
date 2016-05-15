@@ -1,6 +1,7 @@
 # Virtual-Keyboard-Generator
 This web application helps the user to generate a virtual keyboard of his own preference.
-The keyboard supports normal keys and user-defined action keys also. These action Keys like 'GO','SEARCH',etc work accoording to the callback function provided.
+The keyboard supports normal keys and user-defined action keys also. These action Keys like 'GO','SEARCH',etc work accoording to the callback function provided.<br>
+Click on http://tub99.github.io/VirtualKeyboard/index.html to get a feel of this virtual keyboard
 
 ## Creating a keyboard with all keys.
 ``` javascript
